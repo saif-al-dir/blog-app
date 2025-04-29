@@ -20,6 +20,9 @@ const Home = () => {
                     </Card.Body>
                 </Card>
             ))}
+            <Link to="/post/add">
+                <button>Add Post</button>
+            </Link>
         </div>
     );
 };
