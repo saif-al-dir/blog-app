@@ -1,18 +1,19 @@
-// /components/features/PostForm.js
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Button } from 'react-bootstrap';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 const PostForm = ({ action, actionText, ...props }) => {
     const [title, setTitle] = useState(props.title || '');
     const [author, setAuthor] = useState(props.author || '');
     const [publishedDate, setPublishedDate] = useState(props.publishedDate || '');
     const [shortDescription, setShortDescription] = useState(props.shortDescription || '');
-    const [content, setContent] = useState(props.content || '');
-
+    // const [content, setContent] = useState(props.content || '');
+    const [value, setValue] = useState('');
     const handleSubmit = e => {
         e.preventDefault();
-        action({ title, author, publishedDate, shortDescription, content });
+        action({ title, author, publishedDate, shortDescription });
     };
 
     return (
@@ -35,7 +36,12 @@ const PostForm = ({ action, actionText, ...props }) => {
             </Form.Group>
             <Form.Group className="mb-3">
                 <Form.Label>Content</Form.Label>
-                <Form.Control as="textarea" rows={5} value={content} onChange={e => setContent(e.target.value)} required />
+                <ReactQuill
+                    value={value}
+                    onChange={setValue}
+                    theme="snow"
+                    required
+                />
             </Form.Group>
             <Button type="submit">{actionText}</Button>
         </Form>

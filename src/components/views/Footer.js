@@ -1,8 +1,8 @@
-
+import { ModalFooter } from "react-bootstrap";
 
 const Footer = () => {
     return (
-        <footer text-center>Footer</footer>
+        <ModalFooter text-center>Footer</ModalFooter>
     );
 };
 
